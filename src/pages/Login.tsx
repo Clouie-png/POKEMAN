@@ -10,7 +10,7 @@ const Login = ({ onSwitch }: { onSwitch: () => void }) => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const response = await fetch('http://localhost/POKEMAN/backend/login.php', {
+    const response = await fetch('http://localhost/Pokeman/POKEMAN/backend/login.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -15,7 +15,7 @@ const Register = ({ onSwitch }: { onSwitch: () => void }) => {
       return;
     }
 
-    const response = await fetch('http://localhost/POKEMAN/backend/register.php', {
+    const response = await fetch('http://localhost/Pokeman/POKEMAN/backend/register.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

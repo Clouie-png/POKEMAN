@@ -1,16 +1,17 @@
-Request URL
-http://localhost/POKEMAN/backend/login.php
-Referrer Policy
-strict-origin-when-cross-origin
-content-type
-application/json
-referer
-http://192.168.100.76:8080/
-sec-ch-ua
-"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"
-sec-ch-ua-mobile
-?0
-sec-ch-ua-platform
-"Windows"
-user-agent
-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36
+[Fri Sep 19 18:08:46.715623 2025] [php:notice] [pid 7040:tid 1812] [client ::1:56821] login.php: Script started.
+[Fri Sep 19 18:08:46.716624 2025] [php:notice] [pid 7040:tid 1812] [client ::1:56821] login.php: Before include_once database.php
+[Fri Sep 19 18:08:46.718624 2025] [php:notice] [pid 7040:tid 1812] [client ::1:56821] login.php: After include_once database.php
+[Fri Sep 19 18:08:46.718624 2025] [php:notice] [pid 7040:tid 1812] [client ::1:56821] login.php: JSON decode failed or empty input.
+[Fri Sep 19 18:08:51.439180 2025] [php:notice] [pid 7040:tid 1812] [client ::1:56964] login.php: Script started., referer: http://localhost:8080/
+[Fri Sep 19 18:08:53.104886 2025] [php:notice] [pid 7040:tid 1812] [client ::1:56964] login.php: Script started., referer: http://localhost:8080/
+[Fri Sep 19 18:09:00.152579 2025] [php:notice] [pid 7040:tid 1812] [client ::1:57078] login.php: Script started., referer: http://localhost:8080/
+[Fri Sep 19 18:09:41.340379 2025] [php:notice] [pid 7040:tid 1812] [client ::1:57606] login.php: Script started., referer: http://localhost:8080/
+[Fri Sep 19 18:09:51.966436 2025] [php:notice] [pid 7040:tid 1820] [client ::1:57741] login.php: Script started., referer: http://localhost:8080/
+[Fri Sep 19 18:11:41.614595 2025] [php:notice] [pid 7040:tid 1820] [client ::1:59121] login.php: Script started., referer: http://localhost:8080/
+[Fri Sep 19 18:15:50.198694 2025] [php:notice] [pid 7040:tid 1820] [client ::1:62150] login.php: Script started., referer: http://192.168.100.76:8080/
+[Fri Sep 19 18:15:50.200695 2025] [php:notice] [pid 7040:tid 1820] [client ::1:62150] login.php: Script started., referer: http://192.168.100.76:8080/
+[Fri Sep 19 18:15:50.200695 2025] [php:notice] [pid 7040:tid 1820] [client ::1:62150] login.php: Before include_once database.php, referer: http://192.168.100.76:8080/
+[Fri Sep 19 18:15:50.202696 2025] [php:notice] [pid 7040:tid 1820] [client ::1:62150] login.php: After include_once database.php, referer: http://192.168.100.76:8080/
+[Fri Sep 19 18:15:50.202696 2025] [php:notice] [pid 7040:tid 1820] [client ::1:62150] login.php: JSON data received., referer: http://192.168.100.76:8080/
+[Fri Sep 19 18:15:50.202696 2025] [php:notice] [pid 7040:tid 1820] [client ::1:62150] login.php: Email: Clouie, referer: http://192.168.100.76:8080/
+[Fri Sep 19 18:15:50.203696 2025] [php:notice] [pid 7040:tid 1820] [client ::1:62150] login.php: Script finished., referer: http://192.168.100.76:8080/ 

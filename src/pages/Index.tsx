@@ -21,7 +21,7 @@ const Index = () => {
   }, []);
 
   const fetchUsers = async () => {
-    const response = await fetch('http://192.168.100.76/POKEMAN/backend/get_users.php');
+    const response = await fetch('http://localhost/Pokeman/POKEMAN/backend/get_users.php');
     const data = await response.json();
     setUsers(data.records);
   };
@@ -29,7 +29,7 @@ const Index = () => {
   const handleSaveUser = async (userData: UserData) => {
     if (userData.id) {
       // Edit existing user
-      const response = await fetch('http://192.168.100.76/POKEMAN/backend/update_user.php', {
+      const response = await fetch('http://localhost/Pokeman/POKEMAN/backend/update_user.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const Index = () => {
       });
     } else {
       // Add new user
-      const response = await fetch('http://192.168.100.76/POKEMAN/backend/register.php', {
+      const response = await fetch('http://localhost/Pokeman/POKEMAN/backend/register.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const Index = () => {
   };
 
   const handleDeleteUser = async (userId: string) => {
-    const response = await fetch('http://192.168.100.76/POKEMAN/backend/delete_user.php', {
+    const response = await fetch('http://localhost/Pokeman/POKEMAN/backend/delete_user.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

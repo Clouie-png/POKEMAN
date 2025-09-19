@@ -16,7 +16,7 @@ const DashboardLayout = ({ children, currentView, onViewChange }: DashboardLayou
   ];
 
   return (
-    <div className="min-h-screen bg-base-200">
+    <div className="min-h-screen bg-base-100">
       {/* Navigation */}
       <div className="navbar bg-base-100 shadow-lg">
         <div className="navbar-start">
@@ -49,7 +49,7 @@ const DashboardLayout = ({ children, currentView, onViewChange }: DashboardLayou
               <Users className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-neutral">UserFlow</h1>
+              <h1 className="text-xl font-bold text-neutral">Pokeman</h1>
               <p className="text-sm text-neutral/60">User Management System</p>
             </div>
           </div>
