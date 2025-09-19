@@ -1,70 +1,62 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
-import UserList from '@/components/users/UserList';
+import { UserList } from '@/components/users/UserList';
 import UserForm from '@/components/users/UserForm';
 import { useToast } from '@/hooks/use-toast';
-import { AlertTriangle, Database } from 'lucide-react';
 
 interface UserData {
   id: string;
-  username: string;
+  name: string;
   email: string;
-  createdAt?: string;
-  isActive?: boolean;
 }
 
 const Index = () => {
   const [currentView, setCurrentView] = useState('users');
-  const [users, setUsers] = useState<UserData[]>([
-    {
-      id: '1',
-      username: 'john_doe',
-      email: 'john@example.com',
-      createdAt: '2024-01-15',
-      isActive: true,
-    },
-    {
-      id: '2', 
-      username: 'jane_smith',
-      email: 'jane@example.com',
-      createdAt: '2024-01-20',
-      isActive: true,
-    },
-    {
-      id: '3',
-      username: 'mike_wilson',
-      email: 'mike@example.com', 
-      createdAt: '2024-01-25',
-      isActive: false,
-    },
-  ]);
+  const [users, setUsers] = useState<UserData[]>([]);
   const [editingUser, setEditingUser] = useState<UserData | null>(null);
   const { toast } = useToast();
 
-  const handleSaveUser = (userData: UserData) => {
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+    const response = await fetch('http://192.168.100.76/POKEMAN/backend/get_users.php');
+    const data = await response.json();
+    setUsers(data.records);
+  };
+
+  const handleSaveUser = async (userData: UserData) => {
     if (userData.id) {
       // Edit existing user
-      setUsers(users.map(user => 
-        user.id === userData.id ? { ...user, ...userData } : user
-      ));
+      const response = await fetch('http://192.168.100.76/POKEMAN/backend/update_user.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+      const data = await response.json();
       toast({
         title: "User updated",
-        description: "User information has been successfully updated.",
+        description: data.message,
       });
     } else {
       // Add new user
-      const newUser = {
-        ...userData,
-        id: Date.now().toString(),
-        createdAt: new Date().toISOString(),
-        isActive: true,
-      };
-      setUsers([...users, newUser]);
+      const response = await fetch('http://192.168.100.76/POKEMAN/backend/register.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+      const data = await response.json();
       toast({
         title: "User created",
-        description: "New user has been successfully added.",
+        description: data.message,
       });
     }
+    fetchUsers();
     setCurrentView('users');
     setEditingUser(null);
   };
@@ -74,13 +66,21 @@ const Index = () => {
     setCurrentView('add-user');
   };
 
-  const handleDeleteUser = (userId: string) => {
-    setUsers(users.filter(user => user.id !== userId));
+  const handleDeleteUser = async (userId: string) => {
+    const response = await fetch('http://192.168.100.76/POKEMAN/backend/delete_user.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: userId }),
+    });
+    const data = await response.json();
     toast({
       title: "User deleted",
-      description: "User has been successfully removed.",
+      description: data.message,
       variant: "destructive",
     });
+    fetchUsers();
   };
 
   const handleCancel = () => {
@@ -110,22 +110,6 @@ const Index = () => {
 
   return (
     <>
-      {/* Supabase Integration Notice */}
-      <div className="alert alert-warning shadow-lg mb-6 mx-4 mt-4">
-        <AlertTriangle className="h-5 w-5" />
-        <div>
-          <h3 className="font-bold">Backend Integration Required</h3>
-          <div className="text-sm">
-            To enable full authentication and database functionality, connect to Supabase using the green button in the top right.
-            Currently showing demo data - real users will be stored in your Supabase database.
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
-          <Database className="h-4 w-4" />
-          <span className="text-sm font-medium">Click Supabase → Connect</span>
-        </div>
-      </div>
-
       <DashboardLayout 
         currentView={currentView} 
         onViewChange={setCurrentView}

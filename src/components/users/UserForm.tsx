@@ -3,7 +3,7 @@ import { User, Mail, Lock, Save, X } from 'lucide-react';
 
 interface UserData {
   id?: string;
-  username: string;
+  name: string;
   email: string;
 }
 
@@ -15,7 +15,7 @@ interface UserFormProps {
 
 const UserForm = ({ user, onSave, onCancel }: UserFormProps) => {
   const [formData, setFormData] = useState({
-    username: user?.username || '',
+    name: user?.name || '',
     email: user?.email || '',
     password: '',
   });
@@ -25,10 +25,10 @@ const UserForm = ({ user, onSave, onCancel }: UserFormProps) => {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
     
-    if (!formData.username.trim()) {
-      newErrors.username = 'Username is required';
-    } else if (formData.username.length < 3) {
-      newErrors.username = 'Username must be at least 3 characters';
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    } else if (formData.name.length < 3) {
+      newErrors.name = 'Name must be at least 3 characters';
     }
     
     if (!formData.email.trim()) {
@@ -52,7 +52,7 @@ const UserForm = ({ user, onSave, onCancel }: UserFormProps) => {
     if (validateForm()) {
       onSave({
         id: user?.id,
-        username: formData.username,
+        name: formData.name,
         email: formData.email,
       });
     }
@@ -80,19 +80,19 @@ const UserForm = ({ user, onSave, onCancel }: UserFormProps) => {
             <label className="label">
               <span className="label-text font-medium flex items-center gap-2">
                 <User className="h-4 w-4" />
-                Username
+                Name
               </span>
             </label>
             <input
               type="text"
-              value={formData.username}
-              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-              placeholder="Enter username"
-              className={`input input-bordered w-full ${errors.username ? 'input-error' : ''}`}
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              placeholder="Enter name"
+              className={`input input-bordered w-full ${errors.name ? 'input-error' : ''}`}
             />
-            {errors.username && (
+            {errors.name && (
               <label className="label">
-                <span className="label-text-alt text-error">{errors.username}</span>
+                <span className="label-text-alt text-error">{errors.name}</span>
               </label>
             )}
           </div>
